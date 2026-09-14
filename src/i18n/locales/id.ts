@@ -1577,7 +1577,4 @@ export default {
     'kt.seo.faq.a4': 'Ya! Alat kami dapat membuat kode QR untuk KakaoTalk ID atau nomor telepon Anda. Pengguna lain bisa memindainya dengan kamera mereka dan menambahkan Anda sebagai teman secara instan.',
 
     // Top Banner
-    'banner.free': '100% Gratis',
-    'banner.private': 'Sepenuhnya Privat',
-    'banner.close': 'Tutup banner',
 } as const;

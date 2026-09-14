@@ -3,7 +3,6 @@ import { languages, type Lang } from '../i18n/ui';
 import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import Footer from '../components/Footer.astro';
 import ToolSidebar from '../components/ToolSidebar.astro';
-import TopBanner from '../components/TopBanner.astro';
 import { ClientRouter } from 'astro:transitions';
 import VercelAnalytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
@@ -81,7 +80,6 @@ const websiteSchema = {
     <script defer src="https://cloud.umami.is/script.js" data-website-id="53e38f8b-458a-439c-9eb3-d70796f83e28"></script>
   </head>
   <body>
-    <TopBanner lang={lang} />
     <div class="page-layout">
       <ToolSidebar lang={lang} activeTool={service} accentColor={resolvedAccent} />
       <main class="main-content">

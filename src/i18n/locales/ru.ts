@@ -1568,9 +1568,6 @@ export default {
     'sleep.tips.tip4': 'Избегайте кофеина минимум за 6 часов до сна',
 
     // Top Banner
-    'banner.free': '100% Бесплатно',
-    'banner.private': 'Полностью Приватно',
-    'banner.close': 'Закрыть баннер',
 
     // Color Picker (cp = color-picker)
     'bc.color-picker': 'Выбор цвета',

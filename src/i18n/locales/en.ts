@@ -1664,9 +1664,6 @@ export default {
     'sleep.tips.tip4': 'Avoid caffeine at least 6 hours before bedtime',
 
     // Top Banner
-    'banner.free': '100% Free',
-    'banner.private': 'Fully Private',
-    'banner.close': 'Close banner',
 
     // Color Picker (cp = color-picker)
     'bc.color-picker': 'Color Picker',

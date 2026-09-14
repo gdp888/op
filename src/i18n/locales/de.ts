@@ -1521,7 +1521,4 @@ export default {
     'kt.seo.faq.a4': 'Ja! Unser Tool kann einen QR-Code für Ihre KakaoTalk ID oder Telefonnummer erstellen. Ein anderer Benutzer kann ihn mit seiner Kamera scannen und Sie sofort als Freund hinzufügen.',
 
     // Top Banner
-    'banner.free': '100% Kostenlos',
-    'banner.private': 'Vollständig Privat',
-    'banner.close': 'Banner schließen',
 } as const;

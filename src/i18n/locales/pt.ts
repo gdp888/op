@@ -1578,8 +1578,5 @@ export default {
     'kt.seo.faq.a4': 'Sim! Nossa ferramenta pode criar um código QR para o seu KakaoTalk ID ou número de telefone. Outro usuário pode escanear com a câmera e te adicionar como amigo instantaneamente.',
 
     // Top Banner
-    'banner.free': '100% Grátis',
-    'banner.private': 'Totalmente Privado',
-    'banner.close': 'Fechar banner',
 
 } as const;
