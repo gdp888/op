@@ -42,6 +42,11 @@ export const blogRelations: Record<string, BlogRelation> = {
     toolPage: 'telegram',
     toolNameKey: 'hub.service.telegram.title',
   },
+  'whatsapp-direct-message': {
+    relatedSlugs: ['whatsapp-without-saving-number', 'whatsapp-link-generator'],
+    toolPage: 'whatsapp',
+    toolNameKey: 'hub.service.whatsapp.title',
+  },
   'pomodoro-timer-guide': {
     relatedSlugs: [],
     toolPage: 'pomodoro',
