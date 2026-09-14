@@ -42,6 +42,11 @@ export const blogRelations: Record<string, BlogRelation> = {
     toolPage: 'telegram',
     toolNameKey: 'hub.service.telegram.title',
   },
+  'pomodoro-timer-guide': {
+    relatedSlugs: [],
+    toolPage: 'pomodoro',
+    toolNameKey: 'hub.service.pomodoro.title',
+  },
 };
 
 /**
