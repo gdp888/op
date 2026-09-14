@@ -1603,6 +1603,11 @@ export default {
     'pomodoro.stats.completed': 'Completed',
     'pomodoro.stats.focusTime': 'Focus Time',
     'pomodoro.stats.streak': 'Streak',
+
+    'pomodoro.history.title': 'Today\'s Sessions',
+    'pomodoro.history.clear': 'Clear',
+    'pomodoro.history.noTask': 'No task',
+    'pomodoro.history.minutes': 'min',
     'pomodoro.settings': '⚙️ Settings',
     'pomodoro.settingsTitle': 'Timer Settings',
     'pomodoro.settings.workDuration': 'Focus Duration',

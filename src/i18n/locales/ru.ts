@@ -1507,6 +1507,11 @@ export default {
     'pomodoro.stats.completed': 'Выполнено',
     'pomodoro.stats.focusTime': 'Время фокуса',
     'pomodoro.stats.streak': 'Серия',
+
+    'pomodoro.history.title': 'Сегодняшние сессии',
+    'pomodoro.history.clear': 'Очистить',
+    'pomodoro.history.noTask': 'Без задачи',
+    'pomodoro.history.minutes': 'мин',
     'pomodoro.settings': '⚙️ Настройки',
     'pomodoro.settingsTitle': 'Настройки таймера',
     'pomodoro.settings.workDuration': 'Длительность фокуса',

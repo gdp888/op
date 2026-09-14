@@ -1409,6 +1409,11 @@ export default {
     'pomodoro.stats.completed': 'مكتمل',
     'pomodoro.stats.focusTime': 'وقت التركيز',
     'pomodoro.stats.streak': 'سلسلة',
+
+    'pomodoro.history.title': 'جلسات اليوم',
+    'pomodoro.history.clear': 'مسح',
+    'pomodoro.history.noTask': 'بدون مهمة',
+    'pomodoro.history.minutes': 'دق',
     'pomodoro.settings': '⚙️ الإعدادات',
     'pomodoro.settingsTitle': 'إعدادات المؤقت',
     'pomodoro.settings.workDuration': 'مدة التركيز',

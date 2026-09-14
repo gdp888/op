@@ -1483,6 +1483,11 @@ export default {
     'pomodoro.stats.completed': 'Concluídos',
     'pomodoro.stats.focusTime': 'Tempo de Foco',
     'pomodoro.stats.streak': 'Sequência',
+
+    'pomodoro.history.title': 'Sessões de hoje',
+    'pomodoro.history.clear': 'Limpar',
+    'pomodoro.history.noTask': 'Sem tarefa',
+    'pomodoro.history.minutes': 'min',
     'pomodoro.settings': '⚙️ Configurações',
     'pomodoro.settingsTitle': 'Configurações do Timer',
     'pomodoro.settings.workDuration': 'Duração do Foco',

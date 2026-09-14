@@ -1482,6 +1482,11 @@ export default {
     'pomodoro.stats.completed': 'Selesai',
     'pomodoro.stats.focusTime': 'Waktu Fokus',
     'pomodoro.stats.streak': 'Streak',
+
+    'pomodoro.history.title': 'Sesi hari ini',
+    'pomodoro.history.clear': 'Hapus',
+    'pomodoro.history.noTask': 'Tanpa tugas',
+    'pomodoro.history.minutes': 'mnt',
     'pomodoro.settings': '⚙️ Pengaturan',
     'pomodoro.settingsTitle': 'Pengaturan Timer',
     'pomodoro.settings.workDuration': 'Durasi Fokus',

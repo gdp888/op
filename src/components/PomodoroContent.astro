@@ -195,6 +195,15 @@ const pomodoroSchema = {
         </div>
       </div>
 
+      <!-- Session History -->
+      <div class="history-section" id="history-section" style="display:none">
+        <div class="history-header">
+          <h3 class="history-title" data-i18n="pomodoro.history.title">{t('pomodoro.history.title')}</h3>
+          <button type="button" class="history-clear-btn" id="history-clear-btn" title={t('pomodoro.history.clear')}>{t('pomodoro.history.clear')}</button>
+        </div>
+        <ul class="history-list" id="history-list"></ul>
+      </div>
+
       <!-- Settings Toggle -->
       <button class="settings-toggle" id="settings-toggle">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -369,8 +378,15 @@ const pomodoroSchema = {
         sessionsCount: document.getElementById('sessions-count'),
         autoStartBreaksToggle: document.getElementById('auto-start-breaks'),
         autoStartWorkToggle: document.getElementById('auto-start-work'),
-        soundEnabledToggle: document.getElementById('sound-enabled')
+        soundEnabledToggle: document.getElementById('sound-enabled'),
+        historySection: document.getElementById('history-section'),
+        historyList: document.getElementById('history-list'),
+        historyClearBtn: document.getElementById('history-clear-btn')
       };
+      
+      // History state (kept separate from session state — persists across days)
+      this.history = this.loadHistory();
+      this.renderHistory();
       
       this.loadState();
       this.bindEvents();
@@ -419,6 +435,11 @@ const pomodoroSchema = {
         this.soundEnabled = e.target.checked;
         this.saveState();
       });
+      
+      // History clear button
+      if (this.elements.historyClearBtn) {
+        this.elements.historyClearBtn.addEventListener('click', () => this.clearHistory());
+      }
       
       // Keyboard shortcuts
       document.addEventListener('keydown', (e) => {
@@ -511,6 +532,13 @@ const pomodoroSchema = {
         this.totalFocusTime += Math.round(this.durations.work / 60);
         this.currentStreak++;
         this.lastCompletedDate = new Date().toDateString();
+        
+        // Record in history
+        this.addHistoryEntry({
+          task: this.elements.activeTaskText?.textContent || '',
+          duration: Math.round(this.durations.work / 60),
+          timestamp: Date.now()
+        });
         
         // Update session dot
         const dot = this.elements.sessionDots?.querySelector(`[data-session="${this.currentSession}"]`);
@@ -871,6 +899,74 @@ const pomodoroSchema = {
       
       // Request notification permission on first interaction
       document.addEventListener('click', () => this.requestNotificationPermission(), { once: true });
+    }
+    
+    // ===== SESSION HISTORY =====
+    // History persists across days (separate from session state).
+    // Only today's sessions are shown, but older ones are kept for stats
+    // until manually cleared.
+    loadHistory() {
+      try {
+        const saved = localStorage.getItem('pomodoro-history');
+        if (saved) return JSON.parse(saved);
+      } catch (e) {
+        console.log('Could not load history:', e);
+      }
+      return [];
+    }
+    
+    saveHistory() {
+      try {
+        localStorage.setItem('pomodoro-history', JSON.stringify(this.history));
+      } catch (e) {
+        console.log('Could not save history:', e);
+      }
+    }
+    
+    addHistoryEntry(entry) {
+      this.history.unshift(entry); // newest first
+      // Keep last 100 entries to avoid localStorage bloat
+      if (this.history.length > 100) this.history = this.history.slice(0, 100);
+      this.saveHistory();
+      this.renderHistory();
+    }
+    
+    clearHistory() {
+      this.history = [];
+      this.saveHistory();
+      this.renderHistory();
+    }
+    
+    renderHistory() {
+      if (!this.elements.historyList || !this.elements.historySection) return;
+      
+      // Show today's sessions only
+      const today = new Date().toDateString();
+      const todayEntries = this.history.filter(e => new Date(e.timestamp).toDateString() === today);
+      
+      if (todayEntries.length === 0) {
+        this.elements.historySection.style.display = 'none';
+        this.elements.historyList.innerHTML = '';
+        return;
+      }
+      
+      this.elements.historySection.style.display = 'block';
+      
+      const emptyTaskLabel = this.getI18n('pomodoro.history.noTask') || 'No task';
+      const minLabel = this.getI18n('pomodoro.history.minutes') || 'min';
+      
+      this.elements.historyList.innerHTML = todayEntries.map(entry => {
+        const time = new Date(entry.timestamp);
+        const timeStr = time.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+        const taskText = entry.task || emptyTaskLabel;
+        return `
+          <li class="history-item">
+            <span class="history-time">${timeStr}</span>
+            <span class="history-task">${taskText}</span>
+            <span class="history-duration">${entry.duration} ${minLabel}</span>
+          </li>
+        `;
+      }).join('');
     }
     
     // Helper to get i18n strings from data attributes
@@ -1490,5 +1586,96 @@ const pomodoroSchema = {
 
   :global([data-theme="dark"]) .control-btn.primary {
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
+  }
+
+  /* ===== Session History ===== */
+  .history-section {
+    background: var(--bg-secondary, #1a2332);
+    border: 1px solid var(--border-color, #253040);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+  }
+  .history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .history-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary, #e9edf5);
+    margin: 0;
+  }
+  .history-clear-btn {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary, #9fb3c8);
+    background: transparent;
+    border: 1px solid var(--border-color, #253040);
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .history-clear-btn:hover {
+    color: #ef4444;
+    border-color: #ef4444;
+  }
+  .history-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+  .history-list::-webkit-scrollbar { width: 6px; }
+  .history-list::-webkit-scrollbar-track { background: transparent; }
+  .history-list::-webkit-scrollbar-thumb {
+    background: var(--border-color, #253040);
+    border-radius: 3px;
+  }
+  .history-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.65rem;
+    background: var(--bg-input, #1a2332);
+    border-radius: 8px;
+    font-size: 0.78rem;
+  }
+  .history-time {
+    font-weight: 700;
+    color: var(--opn-primary, #25D366);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    min-width: 44px;
+  }
+  .history-task {
+    flex: 1;
+    color: var(--text-primary, #e9edf5);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .history-duration {
+    font-size: 0.72rem;
+    color: var(--text-secondary, #9fb3c8);
+    font-weight: 600;
+    flex-shrink: 0;
+    background: var(--bg-secondary, #101828);
+    padding: 0.15rem 0.45rem;
+    border-radius: 5px;
+  }
+  @media (max-width: 520px) {
+    .history-section { padding: 0.75rem 0.85rem; }
+    .history-title { font-size: 0.78rem; }
+    .history-item { padding: 0.4rem 0.5rem; font-size: 0.72rem; gap: 0.4rem; }
+    .history-time { min-width: 38px; }
   }
 </style>

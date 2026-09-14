@@ -1483,6 +1483,11 @@ export default {
     'pomodoro.stats.completed': 'Completados',
     'pomodoro.stats.focusTime': 'Tiempo de Enfoque',
     'pomodoro.stats.streak': 'Racha',
+
+    'pomodoro.history.title': 'Sesiones de hoy',
+    'pomodoro.history.clear': 'Limpiar',
+    'pomodoro.history.noTask': 'Sin tarea',
+    'pomodoro.history.minutes': 'min',
     'pomodoro.settings': '⚙️ Configuración',
     'pomodoro.settingsTitle': 'Configuración del Temporizador',
     'pomodoro.settings.workDuration': 'Duración del Enfoque',
