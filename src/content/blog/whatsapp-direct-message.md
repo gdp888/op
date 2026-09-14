@@ -1,6 +1,6 @@
 ---
-title: "WhatsApp Direct Message: Send Messages Without Adding Contacts"
-description: "Discover how to send direct WhatsApp messages to any number without saving it as a contact. A complete guide to WhatsApp direct messaging with OPN Chat."
+title: "How to Direct Message on WhatsApp Without Saving Number (2026 Guide)"
+description: "Step-by-step guide: send a WhatsApp direct message to any number without adding a contact. Free online tool, no sign-up, works on any device."
 pubDate: 2026-07-17
 lang: en
 ---
@@ -8,6 +8,19 @@ lang: en
 Sending a WhatsApp message usually requires saving a phone number to your contacts first. But what if you just need to send a quick message to someone and do not want their number cluttering your phone book? That is where WhatsApp direct messaging comes in.
 
 This article explains what WhatsApp direct messages are, how they differ from regular chats, and how you can send them easily using OPN Chat.
+
+## How to DM Someone on WhatsApp Without Saving Their Number
+
+If you want to DM someone on WhatsApp without adding them to your contacts, here's the quickest method:
+
+1. **Go to [OPN Chat](https://opnchat.net)** — our free WhatsApp direct message tool.
+2. **Enter the phone number** with country code (e.g., `447911123456` for UK, `5511999999999` for Brazil).
+3. **Optional: write a message** — it will be pre-filled in the chat when WhatsApp opens.
+4. **Click "Open Chat in WhatsApp"** — you'll be taken straight to a conversation with that number.
+
+No contact saving, no app install, no sign-up. The whole process takes about 5 seconds and works on any device — phone, tablet, or computer.
+
+> **Try it now:** [Open OPN Chat WhatsApp Tool →](https://opnchat.net/whatsapp/)
 
 ## What Is a WhatsApp Direct Message?
 
@@ -76,4 +89,4 @@ If you need to message someone without revealing your personal number, consider 
 
 ---
 
-Stop saving numbers you will never use again. Try [OPN Chat](https://opnchat.net) for fast, private WhatsApp direct messaging without the contact clutter.
+Stop saving numbers you will never use again. Try [OPN Chat](https://opnchat.net/whatsapp/) to DM on WhatsApp without saving a contact — fast, private, and free.
